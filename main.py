@@ -10,7 +10,6 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
 
-    # pygame initialization
     pygame.init()
     dt = 0  # delta Time
     timer = pygame.time.Clock() # time tracking object
