@@ -37,22 +37,26 @@ def main():
     while True:
         for event in pygame.event.get():
           if event.type == pygame.QUIT:
-                return
-        
+            return
+
+        screen.fill("black")    
+
         for obj in updatable:
             obj.update(dt)
-
-        for obj in asteroids:
-            if player.check_collision(obj):
-                print("Game over!")
-                sys.exit()
-
-        screen.fill("black")
 
         for obj in drawable:
             obj.draw(screen)
 
         pygame.display.flip()
+
+        for ast_obj in asteroids:
+            if player.check_collision(ast_obj):
+                print("Game over!")
+                sys.exit()
+            for shot_obj in shots:
+                if shot_obj.check_collision(ast_obj):
+                    ast_obj.kill()
+                    shot_obj.kill()
 
         # limit framerate to 60 fps
         dt = timer.tick(60) / 1000
