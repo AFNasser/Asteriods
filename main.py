@@ -55,7 +55,7 @@ def main():
                 sys.exit()
             for shot_obj in shots:
                 if shot_obj.check_collision(ast_obj):
-                    ast_obj.kill()
+                    ast_obj.split()
                     shot_obj.kill()
 
         # limit framerate to 60 fps
